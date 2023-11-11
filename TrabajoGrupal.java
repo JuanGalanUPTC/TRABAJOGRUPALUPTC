@@ -10,34 +10,49 @@ public class TrabajoGrupal {
         System.out.println("4.Números Ególatras");
         System.out.println("5.Número Mágico");
         int op = sc.nextInt();
-            switch (op) {
-                case 3:
-                    System.out.println("Porfavor ingresa cualquier texto");
-                    String texto = sc.nextLine();
-                    String nombrePropio = convertidorNombrePropio(texto);
-                    System.out.println(nombrePropio);
-                    break;
-                case 4:
-                    System.out.println("Porfavor ingresa un número");
-                    int num = sc.nextInt();
-                    egolatra(num);
-                    break;
-                default:
-                    System.out.println("Opción no valida");
-            }  
+        sc.nextLine();
+
+        switch (op) {
+            case 1:
+                
+                break;
+
+            case 2:
+                
+                break;
+
+            case 3:
+                System.out.println("Por favor ingresa cualquier texto:");
+                String texto = sc.nextLine();
+                String nombrePropio = convertidorNombrePropio(texto);
+                System.out.println(nombrePropio);
+                break;
+
+            case 4:
+                System.out.println("Por favor ingresa un número:");
+                int num = sc.nextInt();
+                egolatra(num);
+                break;
+
+            case 5:
+                
+                break;
+
+            default:
+                System.out.println("Opción no válida");
+        }
     }
 
-    public static String convertidorNombrePropio(String texto){
+    public static String convertidorNombrePropio(String texto) {
         texto = texto.trim();
-        
+
         String[] palabras = texto.split("\\s+");
         StringBuilder resultado = new StringBuilder();
-        
+
         for (String palabra : palabras) {
             if (palabra.length() > 1) {
                 String primeraLetra = palabra.substring(0, 1).toUpperCase();
                 String restoPalabra = palabra.substring(1).toLowerCase();
-                
                 resultado.append(primeraLetra).append(restoPalabra);
             } else {
                 resultado.append(palabra);
@@ -46,28 +61,18 @@ public class TrabajoGrupal {
         return resultado.toString();
     }
 
-    public static void egolatra(int num){
-        Scanner sc = new Scanner(System.in);
-        int numero = num;
-        do {
-            System.out.print("Ingrese un número positivo: ");
-            while (!sc.hasNextInt()) {
-                System.out.println("¡Error! Por favor, ingrese un número entero positivo.");
-                sc.next(); 
-            }
-            numero = sc.nextInt();
-            if (numero <= 0) {
-                System.out.println("¡Error! Por favor, ingrese un número entero positivo.");
-            }
-        } while (numero <= 0);
+    public static void egolatra(int num) {
+        int numero = Math.abs(num);
+
         boolean esEgolatra = esNumeroEgolatra(numero);
+
         if (esEgolatra) {
             System.out.println("Verdadero. El número es ególatra.");
         } else {
             System.out.println("Falso. El número no es ególatra.");
         }
     }
-    
+
     private static boolean esNumeroEgolatra(int numero) {
         int numDigitos = contarDigitos(numero);
         int suma = 0;
@@ -84,11 +89,12 @@ public class TrabajoGrupal {
 
     private static int contarDigitos(int numero) {
         int count = 0;
+        
         while (numero != 0) {
             numero /= 10;
             count++;
         }
+
         return count;
     }
-
 }
