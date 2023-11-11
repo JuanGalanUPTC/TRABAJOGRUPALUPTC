@@ -11,7 +11,7 @@ public class TrabajoGrupal {
         System.out.println("5.Número Mágico");
         int op = sc.nextInt();
             switch (op) {
-                case 1:
+                case 3:
                     System.out.println("Porfavor ingresa cualquier texto");
                     String texto = sc.nextLine();
                     String nombrePropio = convertidorNombrePropio(texto);
