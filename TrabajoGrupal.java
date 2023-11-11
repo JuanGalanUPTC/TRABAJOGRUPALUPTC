@@ -62,10 +62,25 @@ public class TrabajoGrupal {
     }
 
     public static void egolatra(int num) {
-        int numero = Math.abs(num);
+        Scanner sc = new Scanner(System.in);
+        int numero;
 
+        do {
+            System.out.print("Ingrese un número positivo: ");
+            while (!sc.hasNextInt()) {
+                System.out.println("¡Error! Por favor, ingrese un número entero positivo.");
+                sc.next(); 
+            }
+            numero = sc.nextInt();
+            if (numero <= 0) {
+                System.out.println("¡Error! Por favor, ingrese un número entero positivo.");
+            }
+        } while (numero <= 0);
+
+        
         boolean esEgolatra = esNumeroEgolatra(numero);
 
+        
         if (esEgolatra) {
             System.out.println("Verdadero. El número es ególatra.");
         } else {
@@ -98,3 +113,4 @@ public class TrabajoGrupal {
         return count;
     }
 }
+
