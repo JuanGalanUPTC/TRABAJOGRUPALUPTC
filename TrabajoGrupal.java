@@ -12,6 +12,7 @@ public class TrabajoGrupal {
         System.out.println("3.Nombre Propio");
         System.out.println("4.Números Ególatras");
         System.out.println("5.Número Mágico");
+        System.out.println("6.Números Amigos");
         int op = sc.nextInt();
         sc.nextLine();
 
@@ -39,6 +40,20 @@ public class TrabajoGrupal {
                 magico();
                 break;
 
+            case 6:
+                System.out.println("Por favor ingresa el primer número:");
+                int num1 = sc.nextInt();
+                System.out.println("Por favor ingresa el segundo número:");
+                int num2 = sc.nextInt();
+                
+                boolean sonAmigos = numerosAmigos(num1, num2);
+                
+                if (sonAmigos) {
+                    System.out.println("Verdadero. Los números son amigos.");
+                } else {
+                    System.out.println("Falso. Los números no son amigos.");
+                }
+                break;
             default:
                 System.out.println("Opción no válida");
         }
@@ -270,5 +285,23 @@ public class TrabajoGrupal {
             sb.append(digito);
         }
         return Integer.parseInt(sb.toString());
+    }
+
+    public static boolean numerosAmigos(int num1, int num2) {
+        int sumaDivisoresNum1 = sumarDivisores(num1);
+        int sumaDivisoresNum2 = sumarDivisores(num2);
+    
+        return (sumaDivisoresNum1 == num2 && sumaDivisoresNum2 == num1);
+    }
+    
+    private static int sumarDivisores(int num) {
+        int suma = 0;
+    
+        for (int i = 1; i < num; i++) {
+            if (num % i == 0) {
+                suma += i;
+            }
+        }
+        return suma;
     }
 }
